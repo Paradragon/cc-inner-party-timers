@@ -22,7 +22,7 @@ function loggedSet(varName, value) {
 var iptVars = {
 	// Parameter glossary
 	// memberName: Apollo, Emilie, Glasses etc.
-	// partyName: Apollo+Emilie, Glasses+Joern etc.
+	// partyName: Apollo-Emilie, Glasses-Joern etc.
 	// name: Either of the above
 
 	prefix: "ccipt.vars.", // Mod variables prefix 
@@ -63,10 +63,10 @@ var iptVars = {
 	// Returns alphabetically sorted party combo name 
 	partyName: function(memberNameA, memberNameB) {
 		if (memberNameA.localeCompare(memberNameB) <= 0) {
-			return memberNameA + "+" + memberNameB;
+			return memberNameA + "-" + memberNameB;
 		}
 		else {
-			return memberNameB + "+" + memberNameA;
+			return memberNameB + "-" + memberNameA;
 		}
 	},
 

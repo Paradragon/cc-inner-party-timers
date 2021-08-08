@@ -38,24 +38,24 @@ ccipl.vars.Apollo.leftAt
 ccipl.vars.Emilie.joinedAt
 
 
-# total playtime with Emilie + Joern party
-ccipl.vars.Emilie+Joern.totalPartyTime
+# total playtime with Emilie & Joern party
+ccipl.vars.Emilie-Joern.totalPartyTime
 
 
-# when was Apollo + Joern party disbanded by either member leaving the party. 
-ccipl.vars.Apollo+Joern.disbandedAt
+# when was Apollo & Joern party disbanded by either member leaving the party. 
+ccipl.vars.Apollo-Joern.disbandedAt
 
 
-# when was Emilie + Joern party formed
-ccipl.vars.Emilie+Joern.formedAt
+# when was Emilie & Joern party formed
+ccipl.vars.Emilie-Joern.formedAt
 
 
 # for how long was current party formed, assuming they are still the current party
-stat.player.playtime - ccipl.vars.Emilie+Joern.formedAt 
+stat.player.playtime - ccipl.vars.Emilie-Joern.formedAt 
 
 
-# how long since you've last played in Emilie + Apollo party, assuming they are not the current party
-stat.player.playtime - ccipl.vars.Apollo+Emilie.disbandedAt
+# how long since you've last played in Emilie & Apollo party, assuming they are not the current party
+stat.player.playtime - ccipl.vars.Apollo-Emilie.disbandedAt
 ```
 
 # Downtime tracking
@@ -85,19 +85,19 @@ Downtime tracking variables are not calculated by default. To start tracking dow
 
 For example, if we want to track downtime for `Emilie` and `Glasses` party, we would increment the following variable.
 
-`ccipl.vars.Emilie+Glasses.trackDowntime`
+`ccipl.vars.Emilie-Glasses.trackDowntime`
 
-After that, next time `Emilie` leaves your party and another member is not `Glasses`, downtime tracking for `Emilie+Glasses` party will start. 
+After that, next time `Emilie` leaves your party and another member is not `Glasses`, downtime tracking for `Emilie-Glasses` party will start. 
 
 Next time when either `Emilie` or `Glasses` joins your party again, downtime tracking will stop and values of `lastDowntime` and `maxDowntime` for their party combo will be updated.
 
-Calculated values can then be accessed from `ccipl.vars.Emilie+Glasses.maxDowntime` and `ccipl.vars.Emilie+Glasses.lastDowntime` variables.
+Calculated values can then be accessed from `ccipl.vars.Emilie-Glasses.maxDowntime` and `ccipl.vars.Emilie-Glasses.lastDowntime` variables.
 
 
 The condition of commonEvents, concerned about downtime, would then look similarly to this:
 ```
 # CommonEvent that requires that Emilie and Glasses were not in the party at the same time for at least 10 minutes
-"condition": "party.has.Emilie && party.has.Glasses && ccipl.vars.Emilie+Glasses.maxDowntime > 600"
+"condition": "party.has.Emilie && party.has.Glasses && ccipl.vars.Emilie-Glasses.maxDowntime > 600"
 ```
 
 After such commonEvent is over, at the end of such event it's advised to do one of the following:
@@ -107,36 +107,36 @@ After such commonEvent is over, at the end of such event it's advised to do one 
 When party member joins or leaves the party and `.trackDowntime` value for that party member or party combo that includes that member is equal to `0 or less`, instead of calculating downtime, all downtime-related values, including `.trackDowntime` are set to `null`.
 
 ## List of alphabetically sorted party combo names
-Party combo names are formed by alphabetically sorting party member names and then concatenating them with `+` separator.
+Party combo names are formed by alphabetically sorting party member names and then concatenating them with `-` separator.
 
 Party combo names for custom companions implicitly follow the same rule.
 ```
-Apollo+Emilie
-Apollo+Glasses
-Apollo+Joern
-Apollo+Luke
-Apollo+Schneider
-Apollo+Shizuka
+Apollo-Emilie
+Apollo-Glasses
+Apollo-Joern
+Apollo-Luke
+Apollo-Schneider
+Apollo-Shizuka
 
-Emilie+Glasses
-Emilie+Joern
-Emilie+Luke
-Emilie+Schneider
-Emilie+Shizuka
+Emilie-Glasses
+Emilie-Joern
+Emilie-Luke
+Emilie-Schneider
+Emilie-Shizuka
 
-Glasses+Joern
-Glasses+Luke
-Glasses+Schneider
-Glasses+Shizuka
+Glasses-Joern
+Glasses-Luke
+Glasses-Schneider
+Glasses-Shizuka
 
-Joern+Luke
-Joern+Schneider
-Joern+Shizuka
+Joern-Luke
+Joern-Schneider
+Joern-Shizuka
 
-Luke+Schneider
-Luke+Shizuka
+Luke-Schneider
+Luke-Shizuka
 
-Schneider+Shizuka
+Schneider-Shizuka
 ```
 
 ## Debugging
