@@ -1,0 +1,23 @@
+{
+  "id": "cc-inner-party-timers",
+
+  "title": {
+    "en_US": "Inner Party Timers"
+  },
+
+  "description": {
+    "en_US": "Provides a range of internal time related variables about your party."
+  },
+
+  "version": "0.1.0",
+
+  "homepage": "https://github.com/Paradragon/cc-inner-party-timers",
+  
+  "icons": {
+    "24": "icon.png"
+  },
+  
+  "module": true,
+
+  "prestart": "prestart.js"
+}
