@@ -1,14 +1,11 @@
 # CrossCode Inner Party Timers
-Provides a range of internal time related variables about your party and intended to be used as resource by other mods. Supports modded companions by default.
+This mod was integrated directly into [CCExtraDialogue](https://github.com/keanuplayz/CCExtraDialogue), for which it was originally written, and therefore became obsolete.
 
 ## Installation
-This mod requires [CCLoader](https://github.com/CCDirectLink/CCLoader) which you can either install manually or use the [CCLoader installer](https://github.com/CCDirectLink/ccloader-installer).
-
-Once CCLoader is installed, [download a release](https://github.com/Paradragon/cc-inner-party-timers/releases) and put it into `CrossCode/assets/mods`.
+---
 
 ## Mod Conflicts
-- Any mod that **increases** party size.
-Stats for **parties** larger than the default 2 will not be tracked correctly. Individual party member stats are unaffected.
+---
 
 # What does it do, exactly?
 This mod adds a range of new time-related variables, which are calculated when party members **join** or **leave** the party.
@@ -66,9 +63,8 @@ members spent outside of your party.
 Downtime is intended to be used from inside of `commonEvents`, when to be triggered, `Event2` requires some passage of time after `Event1` completion  triggered. The idea behind these commonEvents was to simulate that something happened with characters while they were outside of your party.
 
 For an example on how this feature can be used, refer to these files:
-- [WIP]()
-- [WIP]()
-- [WIP]()
+- [CCExtraDialogue\apollo-lukas.cces](https://github.com/keanuplayz/CCExtraDialogue/blob/master/src/dialogues/apollo-lukas.cces)
+- [CCExtraDialogue\lukas-shizuka.cces](https://github.com/keanuplayz/CCExtraDialogue/blob/master/src/dialogues/lukas-shizuka.cces)
 
 ## Downtime-related variables.
  1. `trackDowntime` - **(Decimal)** determines if downtime variables will be calculated for specified member or party combo. 
@@ -143,12 +139,3 @@ Schneider-Shizuka
 To enable console logs, in `prestart.js` change value of `printDebugLog` to `true`
 
 All variables tracked by mod can be safely reset by invoking `ig.vars.set("ccipt", null)`
-
-# Moving forward
-In other words, technical debt after v1.0 release.
-- Break down `preload.js` into multiple files for easier readability.
-- Rewrite internal method of accessing mod variables.
-- Add initialization of certain variables if the player is in a party during first mod launch.
-
-# Contribution
-We are open to pull requests.
